@@ -1,5 +1,10 @@
-import { ComponentExample } from "@/components/component-example";
+import { generateName } from "@/lib/naming/generator";
 
 export default function Page() {
-return <ComponentExample />;
+  const name = generateName();
+  return (
+    <div>
+      {name}
+    </div>
+  )
 }

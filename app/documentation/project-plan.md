@@ -22,6 +22,12 @@ So the endpoints that I need to provide for each are:
 `GET api/v1/names/white/surname` 
 `GET api/v1/names/white/given`
 `GET api/v1/names/white/full`
+`GET /api/v1/names/white/given?gender=male`
+`GET /api/v1/names/white/given?gender=female`
 
 
-Note that all of these endpoints will take a query parameter for the number of names you are trying to generate.
+Note that all of these endpoints will take a query parameters for:
+- gender (which will be male or female)
+- givenNames (an integer less than 10) for hardcoding number of names
+- givenNameProbability
+- count (an integer number less than 1000) 
