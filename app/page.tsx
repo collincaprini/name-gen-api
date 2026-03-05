@@ -1,10 +1,7 @@
-import { generateName } from "@/lib/naming/generator";
+import MainDashboardView from "@/components/MainDashboardView";
 
 export default function Page() {
-  const name = generateName();
   return (
-    <div>
-      {name}
-    </div>
+    <MainDashboardView />
   )
 }
