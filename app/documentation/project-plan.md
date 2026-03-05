@@ -19,15 +19,15 @@ So the endpoints that I need to provide for each are:
 
 `GET api/v1/name` which returns a weighted random name from a random weighted group
 
-`GET api/v1/names/white/surname` 
-`GET api/v1/names/white/given`
-`GET api/v1/names/white/full`
-`GET /api/v1/names/white/given?gender=male`
-`GET /api/v1/names/white/given?gender=female`
+`GET api/v1/names
 
 
 Note that all of these endpoints will take a query parameters for:
 - gender (which will be male or female)
-- givenNames (an integer less than 10) for hardcoding number of names
-- givenNameProbability
+- ethnicity (comma separated list)
+- givenNameCount (an integer less than 10) for hardcoding number of names
 - count (an integer number less than 1000) 
+
+I want to make the quadruple profiles something the user can modify, for some of them.
+
+So let's say gender, number of names, and ethnicity can be configured and passed in to the endpoints

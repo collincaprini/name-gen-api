@@ -42,7 +42,7 @@ It should be idempotent, or at least able to be made idempotent using seed value
   - generate all of the data I will need for given and surnames across the census groups
   - make a test function
 
-04mar2026
+04mar2026:
 - yesterday I 
   - created all the names with frequency jsons
   - made a basic test function
@@ -51,6 +51,16 @@ It should be idempotent, or at least able to be made idempotent using seed value
   - implement the cdfStart and cdfEnd values, going from tuples to quadruples
   - write some basic functions that test that all of the ai generated 
   - write the functions that generate random names based
+
+05mar2026:
+- yesterday I...
+  - created the quadruples for generating names
+  - created a basic first pass function that gets values from quadruples
+  - wrote functions to allow quadruple validation
+- today I will...
+  - create the api endpoint and define the parameters
+  - create a UI page to help the user build queries to run against the api
+  - get it uploaded to vercel and link it from my resume site
 
 
 ### AI Use in Development:
