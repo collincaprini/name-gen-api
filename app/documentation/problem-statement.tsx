@@ -135,11 +135,11 @@ export default function ProblemStatement() {
         <header className="space-y-4 rounded-none border bg-card p-6 md:p-8">
           <Badge variant="outline">Problem Statement</Badge>
           <h1 className="font-['Iowan_Old_Style','Palatino_Linotype','Book_Antiqua','Times_New_Roman',serif] text-3xl leading-tight md:text-5xl md:leading-[1.1]">
-            Name Generation Looks Trivial Until You Use It For Capacity Planning
+            Name Generation is Deceptively Complex
           </h1>
           <p className="text-sm leading-7 text-muted-foreground md:text-base">
             This document explains why synthetic name quality directly impacts infrastructure estimates
-            for search systems, especially when using Elasticsearch `semantic_text`.
+            for search systems, especially in modern systems which implement advanced search and ranking algorithms.  And why I have gone to the trouble of building this name generator API in the first place.
           </p>
         </header>
 
