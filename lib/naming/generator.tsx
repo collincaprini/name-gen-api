@@ -1,4 +1,3 @@
-import { get } from "http";
 import asianFemaleGivenNames from "../profile-definitions/asian-female-given-names.json";
 import asianMaleGivenNames from "../profile-definitions/asian-male-given-names.json";
 import asianSurname from "../profile-definitions/asian-surname.json";
@@ -36,7 +35,12 @@ export function generateOneThousandRandomNames() {
   return names;
 }
 
-export function generateNameString({ givenGender, givenEthnicity, givenNumberOfGivenNames }: { givenGender?: 'male' | 'female', givenEthnicity?: 'asian' | 'black' | 'latino' | 'mena' | 'nativeAmerican' | 'pacificIslander' | 'white', givenNumberOfGivenNames?: number } = {}) {
+export function getRandomValueFromArray(array: any[]) {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}
+
+export function generateNameString({ givenGender, givenEthnicity, givenNumberOfGivenNames }: { givenGender?: 'male' | 'female' | undefined, givenEthnicity?: 'asian' | 'black' | 'latino' | 'mena' | 'nativeAmerican' | 'pacificIslander' | 'white' | undefined, givenNumberOfGivenNames?: number | undefined } = {}) {
   const gender = givenGender || getRandomValueFromQuadrupleArray(gendersQuadruples);
   const ethnicity = givenEthnicity || getRandomValueFromQuadrupleArray(ethnicitiesValues);
   const numberOfGivenNames = givenNumberOfGivenNames || getNumberOfGivenNames(ethnicity);
@@ -81,7 +85,7 @@ export function TestOneThousandNamesComponent(){
   )
 }
 
-export function generateName({ givenGender, givenEthnicity, givenNumberOfGivenNames }: { givenGender?: 'male' | 'female', givenEthnicity?: 'asian' | 'black' | 'latino' | 'mena' | 'nativeAmerican' | 'pacificIslander' | 'white', givenNumberOfGivenNames?: number } = {}) {
+export function generateName({ givenGender, givenEthnicity, givenNumberOfGivenNames }: { givenGender?: 'male' | 'female' | undefined, givenEthnicity?: 'asian' | 'black' | 'latino' | 'mena' | 'nativeAmerican' | 'pacificIslander' | 'white' | undefined, givenNumberOfGivenNames?: number | undefined } = {}) {
   const gender = givenGender || getRandomValueFromQuadrupleArray(gendersQuadruples);
   const ethnicity = givenEthnicity || getRandomValueFromQuadrupleArray(ethnicitiesValues);
   const numberOfGivenNames = givenNumberOfGivenNames || getNumberOfGivenNames(ethnicity);
@@ -250,5 +254,4 @@ function testQuadrupleArrayAccuracy(quadruples : any): boolean {
   }
   return true;
 }
-
 

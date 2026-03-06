@@ -28,6 +28,7 @@ Note that all of these endpoints will take a query parameters for:
 - givenNameCount (an integer less than 10) for hardcoding number of names
 - count (an integer number less than 1000) 
 
-I want to make the quadruple profiles something the user can modify, for some of them.
-
-So let's say gender, number of names, and ethnicity can be configured and passed in to the endpoints
+## Features to come
+I want to make the quadruple profiles something the user can modify and pass in, for some of them.
+So let's say gender, number of names, and ethnicity can be configured and passed in to the endpoints.
+Right now the ethnicity selector is the most naive of the query params.  It works, but it really is only useful if you are doing default distibutions or a single ethnicity, because if you are getting more than one ethnicity you have no way of adjusting the distribution.  

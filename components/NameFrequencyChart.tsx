@@ -24,7 +24,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export default function NameFrequencyChart({ names }: { names: Name[] }) {
+export default function NameFrequencyChart({ names, number }: { names: Name[]; number: number }) {
   const data = Object.entries(
     names.reduce<Record<string, number>>((acc, entry) => {
       const parts = entry.name.trim().split(/\s+/).filter(Boolean)
@@ -38,15 +38,15 @@ export default function NameFrequencyChart({ names }: { names: Name[] }) {
   )
     .map(([name, frequency]) => ({ name, frequency }))
     .sort((a, b) => b.frequency - a.frequency || a.name.localeCompare(b.name))
-    .slice(0, 20)
+    .slice(0, number)
 
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Top 20 Most Frequent Names</CardTitle>
+        <CardTitle>Top {number} Most Frequent Names</CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-140 w-full">
+        <ChartContainer config={chartConfig} className="h-70 w-full">
           <BarChart
             accessibilityLayer
             data={data}

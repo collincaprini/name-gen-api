@@ -26,8 +26,8 @@ export default async function MainDashboardView() {
   return (
     <div className="space-y-6 p-4">
       <div className="flex flex-row space-x-4">
-        <NameFrequencyChart names={names} />
-        <EthnicityPieChart metrics={metrics} />
+        <NameFrequencyChart names={names} number={20} />
+        <EthnicityPieChart names={names} />
       </div>
       <Table>
         <TableHeader>

@@ -49,7 +49,23 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export default function EthnicityPieChart({ metrics }: { metrics: Metrics }) {
+export default function EthnicityPieChart({ names }: { names: any[] }) {
+    const metrics = {
+    totalNames: names.length,
+    numberOfMales: names.filter(name => name.gender === 'male').length,
+    numberOfFemales: names.filter(name => name.gender === 'female').length,
+    numberOfWhites: names.filter(name => name.ethnicity === 'white').length,
+    numberOfLatinos: names.filter(name => name.ethnicity === 'latino').length,
+    numberOfBlacks: names.filter(name => name.ethnicity === 'black').length,
+    numberOfAsians: names.filter(name => name.ethnicity === 'asian').length,
+    numberOfNativeAmericans: names.filter(name => name.ethnicity === 'nativeAmerican').length,
+    numberOfMenas: names.filter(name => name.ethnicity === 'mena').length,
+    numberOfPacificIslanders: names.filter(name => name.ethnicity === 'pacificIslander').length,
+    numberWithOneGivenName: names.filter(name => name.numberOfGivenNames === 1).length,
+    numberWithTwoGivenNames: names.filter(name => name.numberOfGivenNames === 2).length,
+    numberWithThreeGivenNames: names.filter(name => name.numberOfGivenNames === 3).length,
+    numberWithFourGivenNames: names.filter(name => name.numberOfGivenNames === 4).length,
+  };
   const data = [
     { ethnicity: "white", total: metrics.numberOfWhites, fill: "var(--color-white)" },
     { ethnicity: "latino", total: metrics.numberOfLatinos, fill: "var(--color-latino)" },
@@ -60,6 +76,13 @@ export default function EthnicityPieChart({ metrics }: { metrics: Metrics }) {
     { ethnicity: "pacificIslander", total: metrics.numberOfPacificIslanders, fill: "var(--color-pacificIslander)" },
   ]
 
+  const reducedData = data.filter(entry => entry.total > 0)
+  const reducedChartConfig = Object.fromEntries(
+    Object.entries(chartConfig).filter(([key]) =>
+      reducedData.some(entry => entry.ethnicity === key)
+    )
+  )
+
   return (
     <Card className="w-full">
       <CardHeader className="items-center pb-0">
@@ -69,7 +92,7 @@ export default function EthnicityPieChart({ metrics }: { metrics: Metrics }) {
       <CardContent className="pb-2">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-125 [&_.recharts-pie-label-text]:fill-foreground"
+          className="mx-auto aspect-square max-h-70 [&_.recharts-pie-label-text]:fill-foreground"
         >
           <PieChart>
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />
@@ -79,8 +102,8 @@ export default function EthnicityPieChart({ metrics }: { metrics: Metrics }) {
                 className="fill-background"
                 stroke="none"
                 fontSize={12}
-                formatter={(value: keyof typeof chartConfig) =>
-                  chartConfig[value]?.label
+                formatter={(value: keyof typeof reducedChartConfig) =>
+                  reducedChartConfig[value]?.label
                 }
               />
             </Pie>
