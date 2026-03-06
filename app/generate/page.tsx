@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -58,6 +58,7 @@ export default function GeneratorPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [responseBody, setResponseBody] = useState<object | null>(null)
+  const [origin, setOrigin] = useState("")
 
   const queryState = useMemo<NameQueryState>(() => ({
     gender,
@@ -68,6 +69,11 @@ export default function GeneratorPage() {
 
   const queryString = useMemo(() => buildNameQuery(queryState).toString(), [queryState])
   const requestUrl = queryString ? `/api/v1/names?${queryString}` : "/api/v1/names/advanced"
+  const builtQueryUrl = origin ? `${origin}${requestUrl}` : requestUrl
+
+  useEffect(() => {
+    setOrigin(window.location.origin)
+  }, [])
 
   function toggleEthnicity(value: Ethnicity, checked: boolean) {
     setEthnicity((prev) => {
@@ -179,7 +185,7 @@ export default function GeneratorPage() {
             <div className="space-y-2">
               <Label>Built Query</Label>
               <pre className="overflow-x-auto rounded-none border p-2 text-xs">
-                {requestUrl}
+                {builtQueryUrl}
               </pre>
             </div>
 
