@@ -81,8 +81,8 @@ export default function GeneratorPage() {
     setIsLoading(true)
     setError(null)
 
-    try {
-      const response = await fetch(`http://localhost:3000${requestUrl}`)
+    try { 
+      const response = await fetch(requestUrl)
       const data = await response.json() as object
       if (!response.ok) {
         throw new Error(`Request failed with status ${response.status}`)
