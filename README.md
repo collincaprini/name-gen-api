@@ -160,8 +160,6 @@ The generator samples a `Math.random()` value and picks the entry whose CDF rang
 
 * API query params are only minimally validated (for example, `gender` is validated; other numeric bounds are not fully constrained server-side yet).
 
-![1.00](assets/image-1772914114775-r6t5wt.png)
-
-## License
+# License
 
 MIT. See [LICENSE](./LICENSE).
