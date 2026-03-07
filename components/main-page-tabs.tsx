@@ -2,7 +2,6 @@
 
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import GeneratorPage from "@/app/generate/page"
 import ProblemStatement from "@/app/documentation/problem-statement"
 

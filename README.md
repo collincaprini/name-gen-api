@@ -3,33 +3,44 @@
 A Next.js 16 application that generates weighted random names using profile-specific given-name and surname datasets.
 
 This project includes:
-- A versioned HTTP API (`/api/v1/names`) for generating one or many names
-- A local UI (`/generate`) for building and testing API queries
-- A dashboard (`/`) showing sampled output and distribution charts
+
+* A versioned HTTP API (`/api/v1/names`) for generating one or many names
+
+* A local UI (`/generate`) for building and testing API queries
+
+* A dashboard (`/`) showing sampled output and distribution charts
 
 ## Why This Exists
 
 This app is designed to create more realistic mock-name data than a simple "first middle last" generator. It models:
-- Weighted ethnicity selection
-- Weighted gender selection
-- Weighted number-of-given-name patterns by profile
+
+* Weighted ethnicity selection
+
+* Weighted gender selection
+
+* Weighted number-of-given-name patterns by profile
 
 This is useful for testing search behavior, tokenization, indexing, and storage assumptions in systems like Elasticsearch.
 
 ## Tech Stack
 
-- Next.js 16 (App Router)
-- React 19
-- TypeScript
-- Tailwind CSS 4
-- Shadcn/UI + Recharts
+* Next.js 16 (App Router)
+
+* React 19
+
+* TypeScript
+
+* Tailwind CSS 4
+
+* Shadcn/UI + Recharts
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 20+
-- npm
+* Node.js 20+
+
+* npm
 
 ### Install and run
 
@@ -39,8 +50,10 @@ npm run dev
 ```
 
 App will be available at:
-- `http://localhost:3000` (dashboard)
-- `http://localhost:3000/generate` (query builder / API tester)
+
+* `http://localhost:3000` (dashboard)
+
+* `http://localhost:3000/generate` (query builder / API tester)
 
 ## API
 
@@ -52,22 +65,35 @@ Returns one generated name by default when no query params are provided.
 
 ### Query parameters
 
-- `gender`: `male` or `female`
-- `ethnicity`: comma-separated list of values:
-  - `asian`
-  - `black`
-  - `latino`
-  - `mena`
-  - `nativeAmerican`
-  - `pacificIslander`
-  - `white`
-- `givenNameCount`: integer number of given names to force
-- `count`: integer number of names to return
+* `gender`: `male` or `female`
+
+* `ethnicity`: comma-separated list of values:
+
+  * `asian`
+
+  * `black`
+
+  * `latino`
+
+  * `mena`
+
+  * `nativeAmerican`
+
+  * `pacificIslander`
+
+  * `white`
+
+* `givenNameCount`: integer number of given names to force
+
+* `count`: integer number of names to return
 
 Notes:
-- If multiple ethnicities are passed, each generated name picks one randomly from that list.
-- If `gender` is omitted, gender is selected by the internal weighted distribution.
-- If `givenNameCount` is omitted, count of given names is selected by profile-specific weighted distributions.
+
+* If multiple ethnicities are passed, each generated name picks one randomly from that list.
+
+* If `gender` is omitted, gender is selected by the internal weighted distribution.
+
+* If `givenNameCount` is omitted, count of given names is selected by profile-specific weighted distributions.
 
 ### Example requests
 
@@ -116,17 +142,25 @@ The generator samples a `Math.random()` value and picks the entry whose CDF rang
 
 ## Project Structure
 
-- `app/api/v1/names/route.ts`: public API endpoint
-- `app/generate/page.tsx`: interactive request builder
-- `components/MainDashboardView.tsx`: dashboard sample + charts
-- `lib/naming/generator.tsx`: core weighted-name generation logic
-- `lib/profile-definitions/*.json`: weighted name datasets
-- `app/documentation/`: project notes and design rationale
+* `app/api/v1/names/route.ts`: public API endpoint
+
+* `app/generate/page.tsx`: interactive request builder
+
+* `components/MainDashboardView.tsx`: dashboard sample + charts
+
+* `lib/naming/generator.tsx`: core weighted-name generation logic
+
+* `lib/profile-definitions/*.json`: weighted name datasets
+
+* `app/documentation/`: project notes and design rationale
 
 ## Current Limitations
 
-- `app/api/v1/names/advanced/route.ts` is currently a placeholder and not implemented.
-- API query params are only minimally validated (for example, `gender` is validated; other numeric bounds are not fully constrained server-side yet).
+* `app/api/v1/names/advanced/route.ts` is currently a placeholder and not implemented.
+
+* API query params are only minimally validated (for example, `gender` is validated; other numeric bounds are not fully constrained server-side yet).
+
+![1.00](assets/image-1772914114775-r6t5wt.png)
 
 ## License
 
